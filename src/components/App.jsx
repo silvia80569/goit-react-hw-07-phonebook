@@ -41,8 +41,12 @@ const App = () => {
       alert(`${name} is already in contacts.`);
       return;
     }
+    if (!number) {
+      alert('Please enter a valid number.');
+      return;
+    }
 
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, phone: number }));
   };
 
   const handleDeleteContact = contactId => {

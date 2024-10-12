@@ -4,22 +4,22 @@ import PropTypes from 'prop-types';
 
 const ContactForm = ({ onAddContact }) => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleChange = event => {
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
-    } else if (name === 'number') {
-      setNumber(value);
+    } else if (name === 'phone') {
+      setPhone(value);
     }
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    onAddContact(name, number);
+    onAddContact(name, phone);
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -36,11 +36,11 @@ const ContactForm = ({ onAddContact }) => {
         />
         <input
           type="tel"
-          name="number"
+          name="phone"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={number}
+          value={phone}
           onChange={handleChange}
         />
         <button type="submit" className={styles.button}>
